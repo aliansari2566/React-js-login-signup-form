@@ -57,8 +57,8 @@ const OtpVerification = () =>{
         try {
     
             setError("");
-     // let res = await fetch("https://sahulat.fsedge.com:8085/sahulat/otpResend", {
-        let res = await fetch("http://191.1.17.170:8085/sahulat/otpResend", {
+
+        let res = await fetch("xyz", {
             method: "POST",
             body: JSON.stringify({
                 Uin: uin,

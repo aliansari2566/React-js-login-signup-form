@@ -1,7 +1,7 @@
 import React from 'react';
-import { Steps } from 'antd';
+import { Steps as AntSteps } from 'antd';
 
-export const Step = ({
+const CustomSteps = ({
   currentStep,
   stepTitles = [],
   customIconSize,
@@ -9,13 +9,15 @@ export const Step = ({
   dotSize,
   titleLineHeight,
 }) => (
-  <Steps
+  <AntSteps
     direction="vertical"
     current={currentStep}
     items={stepTitles.map(title => ({ title }))}
-    customIconSize={customIconSize}
-    finishIconBorderColor={finishIconBorderColor}
-    dotSize={dotSize}
-    titleLineHeight={titleLineHeight}
+    customIconSize={customIconSize}  // This prop is not supported by Ant Design Steps
+    finishIconBorderColor={finishIconBorderColor} // This prop is not supported by Ant Design Steps
+    dotSize={dotSize} // This prop is not supported by Ant Design Steps
+    titleLineHeight={titleLineHeight} // This prop is not supported by Ant Design Steps
   />
 );
+
+export default CustomSteps;

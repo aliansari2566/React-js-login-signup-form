@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Col, Row } from 'antd';
 import { Link } from 'react-router-dom'; 
+import { OtpVerification } from './OtpVerification';
+import  OtpResend from '../pages/OtpResend';
 
 export const Login = () => {
+  const [showOtpVerification, setShowOtpVerification] = useState(false);
+  const [showOtpResend, setShowOtpResend] = useState(false);
+
+
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+  };
+
+  const handleVerifyOtpClick = () => {
+    setShowOtpVerification(true);
+    setShowOtpResend(false); // Hide the resend OTP form if shown
+  };
+
+  const handleOtpResendClick = () => {
+    setShowOtpResend(true);
+    setShowOtpVerification(false); // Hide the OTP verification form if shown
   };
 
   return (
@@ -20,6 +36,8 @@ export const Login = () => {
 
       <Col className='loginright' xs={22} sm={18} md={12} lg={8} xl={11}>
         {/* Centered form */}
+       
+        {!showOtpVerification && !showOtpResend && (
         <Form
           name="normal_login"
           className="login-form"
@@ -73,7 +91,27 @@ export const Login = () => {
             Or<Link to="/signup">register now!</Link>
           </Form.Item>
 
+
+          <Form.Item>
+            <Button type="primary"  className="login-form-button"  onClick={handleVerifyOtpClick}>
+             verify otp
+            </Button>
+            <Button type="primary"  className="login-form-button" onClick={handleOtpResendClick}>
+             otp Resend
+            </Button>
+            <Button type="primary" className="login-form-button">
+            <Link to="/signup">otp Regenerate</Link>
+            </Button>
+            <Button type="primary"  className="login-form-button">
+            <Link to="/verify_otp">Application status</Link>
+            </Button>
+          </Form.Item>
+
         </Form>
+          )}
+       {showOtpVerification && <OtpVerification />}
+       {showOtpResend && <OtpResend />}
+
       </Col>
     </Row>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Step } from '../components/Step'
+import CustomSteps from '../components/Step'
 import { BasicDetails } from '../components/BasicDetails'
 import { ContactDetails } from '../components/ContactDetails';
 import NomineeDetails from '../components/NomineeDetails';
@@ -45,7 +45,7 @@ export const Signup = () => {
     return (
         <div className='row'>
             <div className='col-lg-6'>
-                <Step className='navigation_steps' currentStep={currentStep} stepTitles={stepTitles} customIconSize={50}  finishIconBorderColor="black"
+                <CustomSteps className='navigation_steps' currentStep={currentStep} stepTitles={stepTitles} customIconSize={50}  finishIconBorderColor="black"
         dotSize={18}
         titleLineHeight={24}/>
             </div>
